@@ -39,10 +39,15 @@ export function initStore() {
 
 export function addNewHistory(newHistory) {
   try {
-    store.currentFunds = newHistory.fundsAtTheTime;
-    store.detailList[store.todayId].push(newHistory);
-    updateStorage();
+    // TODO:
+    /**
+     * - store의 detailList 새로 갱신
+     * - store.currentFunds 새로 갱신
+     */
+    store.detailList = null;
+    store.currentFunds = null;
 
+    updateStorage();
     return true;
   } catch (error) {
     alert(error);
@@ -52,12 +57,12 @@ export function addNewHistory(newHistory) {
 
 export function removeHistory(dateId, itemId) {
   try {
-    store.detailList[dateId] = store.detailList[dateId].filter(
-      ({ id, fundsAtTheTime, amount }) => {
-        if (id === Number(itemId)) store.currentFunds = fundsAtTheTime + amount;
-        return id !== Number(itemId);
-      }
-    );
+    // TODO:
+    /**
+     * - store의 detailList 새로 갱신
+     * - store.currentFunds 새로 갱신
+     */
+    store.detailList[dateId] = null;
 
     updateStorage();
     return true;
