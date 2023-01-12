@@ -4,8 +4,8 @@ import { store, removeHistory } from "../store";
 const $sectionHistory = document.querySelector(".history");
 
 export function initHistoryList() {
-  addHistoryListEventListener();
   renderHistoryList();
+  addHistoryListEventListener();
 }
 
 function addHistoryListEventListener() {
@@ -39,7 +39,7 @@ export function renderHistoryList() {
   $sectionHistory.innerHTML = store.dateList
     .map(({ date, id: dateId }) => {
       const detail = store.detailList[dateId];
-      if (!detail.length) return "";
+      if (!detail?.length) return "";
 
       return `<article class="history-per-day">
       <p class="history-date">2021년 12월 1일</p>

@@ -8,11 +8,11 @@
 
 ## Detail
 
-가곕부 내역 데이터
+가계부 내역 데이터
 
 ```json
 {
-	"totalAsset": 1000000,
+	"currentFunds": 1000000,
 }
 
 // 가계부 내역

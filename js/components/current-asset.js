@@ -7,8 +7,8 @@ const $currentAssetButton = document.querySelector(".current-asset-button");
 const $addItemButton = document.querySelector(".add-item-button");
 
 export function initCurrentAsset() {
-  addCurrentAssetEventListener();
   renderCurrentAsset();
+  addCurrentAssetEventListener();
 }
 
 function addCurrentAssetEventListener() {
