@@ -1,8 +1,14 @@
-import { updateCurrentAsset } from "./current-asset";
-import { store, removeHistory } from "./store";
+import { renderCurrentAsset } from "../components/current-asset";
+import { store, removeHistory } from "../store";
+
 const $sectionHistory = document.querySelector(".history");
 
-export function addHistoryListEventListener() {
+export function initHistoryList() {
+  addHistoryListEventListener();
+  renderHistoryList();
+}
+
+function addHistoryListEventListener() {
   $sectionHistory.addEventListener("click", function (event) {
     const element = event.target;
     if (!element.className.includes("delete-button")) return;
@@ -20,7 +26,7 @@ export function addHistoryListEventListener() {
 }
 
 function reRender() {
-  updateCurrentAsset();
+  renderCurrentAsset();
   renderHistoryList();
 }
 

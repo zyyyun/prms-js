@@ -1,7 +1,7 @@
-import { validatePrice, validateRequired, toHidden, toShow } from "./util";
-import { store, addNewHistory } from "./store";
+import { validatePrice, validateRequired, toHidden, toShow } from "../util";
+import { store, addNewHistory } from "../store";
 import { renderHistoryList } from "./history-list";
-import { updateCurrentAsset } from "./current-asset";
+import { renderCurrentAsset } from "./current-asset";
 
 const $addItemButton = document.querySelector(".add-item-button");
 const $addItemDetail = document.querySelector(".add-item-detail");
@@ -10,7 +10,17 @@ const $addItemCategory = document.querySelector("#item-category");
 const $addItemPrice = document.querySelector("#item-price");
 const $addItemDescription = document.querySelector("#item-description");
 
-export function addItemEditEventListener() {
+export function initAddItem() {
+  renderAddItemButton();
+  addItemEditEventListener();
+}
+
+function renderAddItemButton() {
+  if (store.isFirstEdit) return;
+  toShow($addItemButton);
+}
+
+function addItemEditEventListener() {
   $addItemButton.addEventListener("click", function (event) {
     toHidden(event.target);
     toShow($addItemDetail);
@@ -51,7 +61,7 @@ export function addItemEditEventListener() {
 }
 
 function reRender() {
-  updateCurrentAsset();
+  renderCurrentAsset();
   renderHistoryList();
 }
 
@@ -59,9 +69,4 @@ function initAddItemInput() {
   $addItemCategory.value = "";
   $addItemDescription.value = "";
   $addItemPrice.value = "";
-}
-
-export function renderAddItemButton() {
-  if (store.isFirstEdit) return;
-  toShow($addItemButton);
 }
