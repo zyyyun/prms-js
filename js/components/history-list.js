@@ -4,8 +4,8 @@ import { store, removeHistory } from "../store";
 const $sectionHistory = document.querySelector(".history");
 
 export function initHistoryList() {
-  addHistoryListEventListener();
   renderHistoryList();
+  addHistoryListEventListener();
 }
 
 function addHistoryListEventListener() {
@@ -34,12 +34,12 @@ export function renderHistoryList() {
   $sectionHistory.innerHTML = store.dateList
     .map(({ date, id: dateId }) => {
       const detail = store.detailList[dateId];
-      if (!detail.length) return "";
+      if (!detail?.length) return "";
 
-      return ` <article class="history-per-day">
+      return `<article class="history-per-day">
         <p class="history-date">${date}</p>
         ${detail
-          .reverse()
+          .sort((a, b) => b.id - a.id)
           .map(
             ({
               id,
