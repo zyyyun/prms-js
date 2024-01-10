@@ -49,13 +49,14 @@ export function initStore() {
 
 export function addNewHistory(newHistory) {
   try {
-    if (store.detailList[store.todayId]) {
-      store.detailList[store.todayId].push(newHistory);
-    } else {
-      store.detailList[store.todayId] = [newHistory];
-    }
+    // TODO:
+    /**
+     * - store의 detailList 새로 갱신
+     * - store.currentFunds 새로 갱신
+     */
+    store.detailList = null;
+    store.currentFunds = null;
 
-    store.currentFunds -= newHistory.amount;
     updateStorage();
     return true;
   } catch (error) {
@@ -66,19 +67,17 @@ export function addNewHistory(newHistory) {
 
 export function removeHistory(dateId, itemId) {
   try {
-    store.detailList[dateId] = store.detailList[dateId].filter(
-      ({ id, amount }) => {
-        if (id === Number(itemId)) {
-          store.currentFunds += amount;
-        }
-        return id !== Number(itemId);
-      }
-    );
+    // TODO:
+    /**
+     * - store의 detailList 새로 갱신
+     * - store.currentFunds 새로 갱신
+     */
+    store.detailList[dateId] = null;
 
     updateStorage();
     return true;
   } catch (error) {
-    console.log(error);
+    alert(error);
     return false;
   }
 }
